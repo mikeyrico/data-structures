@@ -54,6 +54,7 @@ module.exports = (function() {
     if (this.curr === this.tail) {
       this.tail = this.curr.getNext();
     }
+    this.size++;
     return true;
   });
 
@@ -66,6 +67,7 @@ module.exports = (function() {
     output = this.curr.getElt();
     this.curr.setElt(this.curr.getNext().getElt());
     this.curr.setNext(this.curr.getNext().getNext());
+    this.size--;
     return output;
   });
 

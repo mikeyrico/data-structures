@@ -73,6 +73,7 @@ describe('LinkedList', function() {
       list.moveToPos(1);
       expect(list.remove()).to.equal(2);
       expect(list.print()).to.eql([1, 3]);
+      expect(list.length()).to.equal(2);
     });
   });
 
@@ -97,7 +98,9 @@ describe('LinkedList', function() {
       list.moveToPos(1);
       list.insert('hey ya');
       expect(list.print()).to.eql(['one', 'hey ya', 'two', 'three', 'four']);
+      expect(list.length()).to.equal(5);
     });
+
   });
 
 });
