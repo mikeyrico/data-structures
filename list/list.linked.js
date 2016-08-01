@@ -66,6 +66,9 @@ module.exports = (function() {
     }
     output = this.curr.getElt();
     this.curr.setElt(this.curr.getNext().getElt());
+    if (this.curr.getNext() === this.tail) {
+      this.tail = this.curr;
+    }
     this.curr.setNext(this.curr.getNext().getNext());
     this.size--;
     return output;
@@ -88,7 +91,7 @@ module.exports = (function() {
     // set current to that
     if (pos < 0) {
       return this.moveToStart();
-    } else if (pos > this.length()) {
+    } else if (pos >= this.length()) {
       return this.moveToEnd();
     }
     var curr = this.head.getNext();

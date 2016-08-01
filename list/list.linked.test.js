@@ -89,6 +89,23 @@ describe('LinkedList', function() {
     });
   });
 
+  describe('next', function() {
+    it('should move the pointer to next node, and stop when at the end', function() {
+      list.append(1);
+      list.append(2);
+      list.append(3);
+      list.next();
+      expect(list.getValue()).to.equal(2);
+      list.next();
+      expect(list.getValue()).to.equal(3);
+      list.next();
+      expect(list.getValue()).to.equal(null);
+      expect(list.currPos()).to.equal(3);
+    });
+
+
+  });
+
   describe('insert', function() {
     it('should insert an element at the current position', function() {
       list.append('one');
@@ -100,7 +117,51 @@ describe('LinkedList', function() {
       expect(list.print()).to.eql(['one', 'hey ya', 'two', 'three', 'four']);
       expect(list.length()).to.equal(5);
     });
+  });
 
+  describe('isAtEnd', function() {
+    it('should return true if position is at end of list', function() {
+      list.append(0);
+      list.append(1);
+      list.append(2);
+      list.moveToEnd();
+      expect(list.isAtEnd()).to.equal(true);
+    });
+
+    it('should return false when in any other position', function() {
+      list.append(0);
+      list.append(1);
+      expect(list.isAtEnd()).to.equal(false);
+      list.next();
+      expect(list.isAtEnd()).to.equal(false);
+      list.next();
+      expect(list.isAtEnd()).to.equal(true);
+    });
+  });
+
+  describe('length', function() {
+    it('should report 0 for an empty list', function() {
+      expect(list.length()).to.equal(0);
+    });
+
+    it('should correctly report the length as items added and removed', function() {
+      list.append(1);
+      expect(list.length()).to.equal(1);
+      list.append(2);
+      list.append(3);
+      expect(list.length()).to.equal(3);
+      list.remove();
+      expect(list.length()).to.equal(2);
+      list.moveToPos(1);
+      list.insert(9);
+      expect(list.length()).to.equal(3);
+      list.moveToStart();
+      list.remove();
+      list.remove();
+      list.remove();
+      list.remove();
+      expect(list.length()).to.equal(0);
+    });
   });
 
 });
