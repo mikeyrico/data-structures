@@ -89,7 +89,15 @@ describe('LinkedList', function() {
   });
 
   describe('insert', function() {
-
+    it('should insert an element at the current position', function() {
+      list.append('one');
+      list.append('two');
+      list.append('three');
+      list.append('four');
+      list.moveToPos(1);
+      list.insert('hey ya');
+      expect(list.print()).to.eql(['one', 'hey ya', 'two', 'three', 'four']);
+    });
   });
 
 });

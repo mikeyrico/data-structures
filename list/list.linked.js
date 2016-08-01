@@ -49,7 +49,12 @@ module.exports = (function() {
 
   LinkedList.method('insert', function(it) {
     // insert value at currentPos
-
+    this.curr.setNext(Node(this.curr.getElt(), this.curr.getNext()));
+    this.curr.setElt(it);
+    if (this.curr === this.tail) {
+      this.tail = this.curr.getNext();
+    }
+    return true;
   });
 
   LinkedList.method('remove', function() {
