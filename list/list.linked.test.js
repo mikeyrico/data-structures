@@ -22,4 +22,14 @@ describe('LinkedList', function() {
     expect(list.getValue).to.be.a('function');
   });
 
+  describe('append', function() {
+    it('should add items to the end of the list', function() {
+      list.append(4);
+      list.append(8);
+      list.append(10);
+      list.moveToEnd();
+      expect(list.getValue()).to.equal(10);
+    });
+  });
+
 });
