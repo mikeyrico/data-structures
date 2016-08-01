@@ -1,5 +1,6 @@
 module.exports = (function () {
 
+// functional shared instantiation pattern
   var Queue = function() {
     var instance = Object.create(queueMethods);
     instance._start = 0;
